@@ -1,0 +1,21 @@
+/**
+ * @license
+ * Copyright BuilderIO All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/BuilderIO/qwik/blob/main/LICENSE
+ */
+import { ItemEntity } from '../data/Item.js';
+import { TodoEntity } from '../data/Todo.js';
+import { injectFunction, jsxFactory } from '../qwik.js';
+import { Footer } from './Footer.js';
+import { Header } from './Header.js';
+import { Main } from './Main.js';
+export const _needed_by_JSX_ = jsxFactory; // eslint-disable-line @typescript-eslint/no-unused-vars
+export default injectFunction(function () {
+    return (jsxFactory("section", { class: "todoapp", "decl:entity": [TodoEntity, ItemEntity] },
+        jsxFactory(Header, null),
+        jsxFactory(Main, { "$todos": TodoEntity.MOCK_USER }),
+        jsxFactory(Footer, { "$todos": TodoEntity.MOCK_USER })));
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVG9kb0FwcF90ZW1wbGF0ZS5qcyIsInNvdXJjZVJvb3QiOiIuLyIsInNvdXJjZXMiOlsic3JjL3VpL1RvZG9BcHBfdGVtcGxhdGUudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7R0FNRztBQUVILE9BQU8sRUFBRSxVQUFVLEVBQUUsTUFBTSxpQkFBaUIsQ0FBQztBQUM3QyxPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFDN0MsT0FBTyxFQUFFLGNBQWMsRUFBRSxVQUFVLEVBQUUsTUFBTSxZQUFZLENBQUM7QUFDeEQsT0FBTyxFQUFFLE1BQU0sRUFBRSxNQUFNLGFBQWEsQ0FBQztBQUNyQyxPQUFPLEVBQUUsTUFBTSxFQUFFLE1BQU0sYUFBYSxDQUFDO0FBQ3JDLE9BQU8sRUFBRSxJQUFJLEVBQUUsTUFBTSxXQUFXLENBQUM7QUFFakMsTUFBTSxDQUFDLE1BQU0sZUFBZSxHQUFHLFVBQVUsQ0FBQyxDQUFDLHdEQUF3RDtBQUNuRyxlQUFlLGNBQWMsQ0FBQztJQUM1QixPQUFPLENBQ0wsd0JBQVMsS0FBSyxFQUFDLFNBQVMsaUJBQWMsQ0FBQyxVQUFVLEVBQUUsVUFBVSxDQUFDO1FBQzVELFdBQUMsTUFBTSxPQUFHO1FBQ1YsV0FBQyxJQUFJLGNBQVMsVUFBVSxDQUFDLFNBQVMsR0FBSTtRQUN0QyxXQUFDLE1BQU0sY0FBUyxVQUFVLENBQUMsU0FBUyxHQUFJLENBQ2hDLENBQ1gsQ0FBQztBQUNKLENBQUMsQ0FBQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBAbGljZW5zZVxuICogQ29weXJpZ2h0IEJ1aWxkZXJJTyBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vZ2l0aHViLmNvbS9CdWlsZGVySU8vcXdpay9ibG9iL21haW4vTElDRU5TRVxuICovXG5cbmltcG9ydCB7IEl0ZW1FbnRpdHkgfSBmcm9tICcuLi9kYXRhL0l0ZW0uanMnO1xuaW1wb3J0IHsgVG9kb0VudGl0eSB9IGZyb20gJy4uL2RhdGEvVG9kby5qcyc7XG5pbXBvcnQgeyBpbmplY3RGdW5jdGlvbiwganN4RmFjdG9yeSB9IGZyb20gJy4uL3F3aWsuanMnO1xuaW1wb3J0IHsgRm9vdGVyIH0gZnJvbSAnLi9Gb290ZXIuanMnO1xuaW1wb3J0IHsgSGVhZGVyIH0gZnJvbSAnLi9IZWFkZXIuanMnO1xuaW1wb3J0IHsgTWFpbiB9IGZyb20gJy4vTWFpbi5qcyc7XG5cbmV4cG9ydCBjb25zdCBfbmVlZGVkX2J5X0pTWF8gPSBqc3hGYWN0b3J5OyAvLyBlc2xpbnQtZGlzYWJsZS1saW5lIEB0eXBlc2NyaXB0LWVzbGludC9uby11bnVzZWQtdmFyc1xuZXhwb3J0IGRlZmF1bHQgaW5qZWN0RnVuY3Rpb24oZnVuY3Rpb24gKCkge1xuICByZXR1cm4gKFxuICAgIDxzZWN0aW9uIGNsYXNzPVwidG9kb2FwcFwiIGRlY2w6ZW50aXR5PXtbVG9kb0VudGl0eSwgSXRlbUVudGl0eV19PlxuICAgICAgPEhlYWRlciAvPlxuICAgICAgPE1haW4gJHRvZG9zPXtUb2RvRW50aXR5Lk1PQ0tfVVNFUn0gLz5cbiAgICAgIDxGb290ZXIgJHRvZG9zPXtUb2RvRW50aXR5Lk1PQ0tfVVNFUn0gLz5cbiAgICA8L3NlY3Rpb24+XG4gICk7XG59KTtcbiJdfQ==

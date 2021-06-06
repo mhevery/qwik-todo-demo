@@ -1,0 +1,15 @@
+/**
+ * @license
+ * Copyright BuilderIO All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/BuilderIO/qwik/blob/main/LICENSE
+ */
+import { Component, QRL } from '../qwik.js';
+export class HeaderComponent extends Component {
+    $newState() {
+        return { text: '' };
+    }
+}
+HeaderComponent.$templateQRL = QRL `ui:/Header_template`;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSGVhZGVyX2NvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIuLyIsInNvdXJjZXMiOlsic3JjL3VpL0hlYWRlcl9jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztHQU1HO0FBRUgsT0FBTyxFQUFFLFNBQVMsRUFBRSxHQUFHLEVBQUUsTUFBTSxZQUFZLENBQUM7QUFPNUMsTUFBTSxPQUFPLGVBQWdCLFNBQVEsU0FBbUM7SUFFdEUsU0FBUztRQUNQLE9BQU8sRUFBRSxJQUFJLEVBQUUsRUFBRSxFQUFFLENBQUM7SUFDdEIsQ0FBQzs7QUFITSw0QkFBWSxHQUFHLEdBQUcsQ0FBQSxxQkFBcUIsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBCdWlsZGVySU8gQWxsIFJpZ2h0cyBSZXNlcnZlZC5cbiAqXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2dpdGh1Yi5jb20vQnVpbGRlcklPL3F3aWsvYmxvYi9tYWluL0xJQ0VOU0VcbiAqL1xuXG5pbXBvcnQgeyBDb21wb25lbnQsIFFSTCB9IGZyb20gJy4uL3F3aWsuanMnO1xuaW1wb3J0IHsgSGVhZGVyUHJvcHMgfSBmcm9tICcuL0hlYWRlci5qcyc7XG5cbmludGVyZmFjZSBIZWFkZXJTdGF0ZSB7XG4gIHRleHQ6IHN0cmluZztcbn1cblxuZXhwb3J0IGNsYXNzIEhlYWRlckNvbXBvbmVudCBleHRlbmRzIENvbXBvbmVudDxIZWFkZXJQcm9wcywgSGVhZGVyU3RhdGU+IHtcbiAgc3RhdGljICR0ZW1wbGF0ZVFSTCA9IFFSTGB1aTovSGVhZGVyX3RlbXBsYXRlYDtcbiAgJG5ld1N0YXRlKCkge1xuICAgIHJldHVybiB7IHRleHQ6ICcnIH07XG4gIH1cbn1cbiJdfQ==
