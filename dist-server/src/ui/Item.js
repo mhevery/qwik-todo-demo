@@ -1,0 +1,13 @@
+"use strict";
+/**
+ * @license
+ * Copyright BuilderIO All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/BuilderIO/qwik/blob/main/LICENSE
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Item = void 0;
+const qwik_js_1 = require("../qwik.js");
+exports.Item = qwik_js_1.jsxDeclareComponent(qwik_js_1.QRL `ui:/Item_template`, 'li');
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSXRlbS5qcyIsInNvdXJjZVJvb3QiOiIuLyIsInNvdXJjZXMiOlsic3JjL3VpL0l0ZW0udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUFBOzs7Ozs7R0FNRzs7O0FBR0gsd0NBQWlFO0FBTXBELFFBQUEsSUFBSSxHQUFHLDZCQUFtQixDQUFZLGFBQUcsQ0FBQSxtQkFBbUIsRUFBRSxJQUFJLENBQUMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBCdWlsZGVySU8gQWxsIFJpZ2h0cyBSZXNlcnZlZC5cbiAqXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2dpdGh1Yi5jb20vQnVpbGRlcklPL3F3aWsvYmxvYi9tYWluL0xJQ0VOU0VcbiAqL1xuXG5pbXBvcnQgdHlwZSB7IEl0ZW1FbnRpdHkgfSBmcm9tICcuLi9kYXRhL0l0ZW0uanMnO1xuaW1wb3J0IHsganN4RGVjbGFyZUNvbXBvbmVudCwgUVJMLCBFbnRpdHlLZXkgfSBmcm9tICcuLi9xd2lrLmpzJztcblxuZXhwb3J0IGludGVyZmFjZSBJdGVtUHJvcHMge1xuICAkaXRlbTogRW50aXR5S2V5PEl0ZW1FbnRpdHk+O1xufVxuXG5leHBvcnQgY29uc3QgSXRlbSA9IGpzeERlY2xhcmVDb21wb25lbnQ8SXRlbVByb3BzPihRUkxgdWk6L0l0ZW1fdGVtcGxhdGVgLCAnbGknKTtcbiJdfQ==

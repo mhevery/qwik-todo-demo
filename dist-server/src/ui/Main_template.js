@@ -1,0 +1,29 @@
+"use strict";
+/**
+ * @license
+ * Copyright BuilderIO All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/BuilderIO/qwik/blob/main/LICENSE
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports._needed_by_JSX_ = void 0;
+const qwik_js_1 = require("../qwik.js");
+const Item_js_1 = require("./Item.js");
+// TODO(file_layout): Rework the file layout. I think it should be in same directory as loading `template.ts` looks weird
+// - Main.ts // public.ts
+// - Main_template.ts // template.ts
+// - Main_action.ts // action.ts
+exports._needed_by_JSX_ = qwik_js_1.jsxFactory; // eslint-disable-line @typescript-eslint/no-unused-vars
+exports.default = qwik_js_1.injectFunction(qwik_js_1.provideEntity(qwik_js_1.provideComponentProp('$todos')), // TODO(type):
+function (todoEntity) {
+    const itemKeys = todoEntity.filteredItems;
+    return (qwik_js_1.jsxFactory(qwik_js_1.Host, { class: "main" /* TODO *ngIf="todoStore.todos.length > 0 " */ },
+        qwik_js_1.jsxFactory("input", { id: "toggle-all", class: "toggle-all", type: "checkbox" }),
+        qwik_js_1.jsxFactory("ul", { class: "todo-list" }, itemKeys.map((key) => (qwik_js_1.jsxFactory(Item_js_1.Item, { "$item": key }))))));
+});
+/* // TODO: Create QFor and QIf directive?
+  <Q for="todos.value" do={(todo) => <Item $item={todo} />} />
+  <Q if="todos.value.length > 0" then={(value) => <section></section>} />
+*/
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTWFpbl90ZW1wbGF0ZS5qcyIsInNvdXJjZVJvb3QiOiIuLyIsInNvdXJjZXMiOlsic3JjL3VpL01haW5fdGVtcGxhdGUudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQTs7Ozs7O0dBTUc7OztBQUdILHdDQVFvQjtBQUNwQix1Q0FBaUM7QUFDakMseUhBQXlIO0FBQ3pILHlCQUF5QjtBQUN6QixvQ0FBb0M7QUFDcEMsZ0NBQWdDO0FBRW5CLFFBQUEsZUFBZSxHQUFHLG9CQUFVLENBQUMsQ0FBQyx3REFBd0Q7QUFDbkcsa0JBQWUsd0JBQWMsQ0FDM0IsdUJBQWEsQ0FDWCw4QkFBb0IsQ0FBQyxRQUFRLENBQTJDLENBQ3pFLEVBQUUsY0FBYztBQUNqQixVQUFVLFVBQXNCO0lBQzlCLE1BQU0sUUFBUSxHQUFHLFVBQVUsQ0FBQyxhQUFhLENBQUM7SUFDMUMsT0FBTyxDQUNMLHFCQUFDLGNBQUksSUFBQyxLQUFLLEVBQUMsTUFBTSxDQUFDLDhDQUE4QztRQUMvRCxnQ0FDRSxFQUFFLEVBQUMsWUFBWSxFQUNmLEtBQUssRUFBQyxZQUFZLEVBQ2xCLElBQUksRUFBQyxVQUFVLEdBSWY7UUFDRiw2QkFBSSxLQUFLLEVBQUMsV0FBVyxJQUNsQixRQUFRLENBQUMsR0FBRyxDQUFDLENBQUMsR0FBRyxFQUFFLEVBQUUsQ0FBQyxDQUNyQixxQkFBQyxjQUFJLGFBQVEsR0FBRyxHQUFJLENBQ3JCLENBQUMsQ0FDQyxDQUNBLENBQ1IsQ0FBQztBQUNKLENBQUMsQ0FDRixDQUFDO0FBRUY7OztFQUdFIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBAbGljZW5zZVxuICogQ29weXJpZ2h0IEJ1aWxkZXJJTyBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vZ2l0aHViLmNvbS9CdWlsZGVySU8vcXdpay9ibG9iL21haW4vTElDRU5TRVxuICovXG5cbmltcG9ydCB0eXBlIHsgVG9kb0VudGl0eSB9IGZyb20gJy4uL2RhdGEvVG9kby5qcyc7XG5pbXBvcnQge1xuICBpbmplY3RGdW5jdGlvbixcbiAganN4RmFjdG9yeSxcbiAgcHJvdmlkZUNvbXBvbmVudFByb3AsXG4gIHByb3ZpZGVFbnRpdHksXG4gIEVudGl0eUtleSxcbiAgUHJvdmlkZXIsXG4gIEhvc3QsXG59IGZyb20gJy4uL3F3aWsuanMnO1xuaW1wb3J0IHsgSXRlbSB9IGZyb20gJy4vSXRlbS5qcyc7XG4vLyBUT0RPKGZpbGVfbGF5b3V0KTogUmV3b3JrIHRoZSBmaWxlIGxheW91dC4gSSB0aGluayBpdCBzaG91bGQgYmUgaW4gc2FtZSBkaXJlY3RvcnkgYXMgbG9hZGluZyBgdGVtcGxhdGUudHNgIGxvb2tzIHdlaXJkXG4vLyAtIE1haW4udHMgLy8gcHVibGljLnRzXG4vLyAtIE1haW5fdGVtcGxhdGUudHMgLy8gdGVtcGxhdGUudHNcbi8vIC0gTWFpbl9hY3Rpb24udHMgLy8gYWN0aW9uLnRzXG5cbmV4cG9ydCBjb25zdCBfbmVlZGVkX2J5X0pTWF8gPSBqc3hGYWN0b3J5OyAvLyBlc2xpbnQtZGlzYWJsZS1saW5lIEB0eXBlc2NyaXB0LWVzbGludC9uby11bnVzZWQtdmFyc1xuZXhwb3J0IGRlZmF1bHQgaW5qZWN0RnVuY3Rpb24oXG4gIHByb3ZpZGVFbnRpdHk8VG9kb0VudGl0eT4oXG4gICAgcHJvdmlkZUNvbXBvbmVudFByb3AoJyR0b2RvcycpIGFzIGFueSBhcyBQcm92aWRlcjxFbnRpdHlLZXk8VG9kb0VudGl0eT4+XG4gICksIC8vIFRPRE8odHlwZSk6XG4gIGZ1bmN0aW9uICh0b2RvRW50aXR5OiBUb2RvRW50aXR5KSB7XG4gICAgY29uc3QgaXRlbUtleXMgPSB0b2RvRW50aXR5LmZpbHRlcmVkSXRlbXM7XG4gICAgcmV0dXJuIChcbiAgICAgIDxIb3N0IGNsYXNzPVwibWFpblwiIC8qIFRPRE8gKm5nSWY9XCJ0b2RvU3RvcmUudG9kb3MubGVuZ3RoID4gMCBcIiAqLz5cbiAgICAgICAgPGlucHV0XG4gICAgICAgICAgaWQ9XCJ0b2dnbGUtYWxsXCJcbiAgICAgICAgICBjbGFzcz1cInRvZ2dsZS1hbGxcIlxuICAgICAgICAgIHR5cGU9XCJjaGVja2JveFwiXG4gICAgICAgICAgLyogVE9ETyAqbmdJZj1cInRvZG9TdG9yZS50b2Rvcy5sZW5ndGhcIiAjdG9nZ2xlYWxsIFxuICAgICAgICAgICAgIFtjaGVja2VkXT1cInRvZG9TdG9yZS5hbGxDb21wbGV0ZWQoKVwiIFxuICAgICAgICAgICAgIChjbGljayk9XCJ0b2RvU3RvcmUuc2V0QWxsVG8odG9nZ2xlYWxsLmNoZWNrZWQpXCIgKi9cbiAgICAgICAgLz5cbiAgICAgICAgPHVsIGNsYXNzPVwidG9kby1saXN0XCI+XG4gICAgICAgICAge2l0ZW1LZXlzLm1hcCgoa2V5KSA9PiAoXG4gICAgICAgICAgICA8SXRlbSAkaXRlbT17a2V5fSAvPlxuICAgICAgICAgICkpfVxuICAgICAgICA8L3VsPlxuICAgICAgPC9Ib3N0PlxuICAgICk7XG4gIH1cbik7XG5cbi8qIC8vIFRPRE86IENyZWF0ZSBRRm9yIGFuZCBRSWYgZGlyZWN0aXZlP1xuICA8USBmb3I9XCJ0b2Rvcy52YWx1ZVwiIGRvPXsodG9kbykgPT4gPEl0ZW0gJGl0ZW09e3RvZG99IC8+fSAvPlxuICA8USBpZj1cInRvZG9zLnZhbHVlLmxlbmd0aCA+IDBcIiB0aGVuPXsodmFsdWUpID0+IDxzZWN0aW9uPjwvc2VjdGlvbj59IC8+XG4qL1xuIl19

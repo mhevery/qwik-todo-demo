@@ -1,0 +1,22 @@
+"use strict";
+/**
+ * @license
+ * Copyright BuilderIO All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/BuilderIO/qwik/blob/main/LICENSE
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ItemEntity = void 0;
+const qwik_js_1 = require("../qwik.js");
+// TODO: How can this be split into public / private part just like Components
+class ItemEntity extends qwik_js_1.Entity {
+    async toggle(isCompleted) {
+        return this.$invokeQRL(qwik_js_1.QRL `data:/Item_toggle`, isCompleted);
+    }
+}
+exports.ItemEntity = ItemEntity;
+ItemEntity.$type = 'Item'; // TODO(type): add as const
+ItemEntity.$qrl = qwik_js_1.QRL `data:/Item#ItemEntity`;
+ItemEntity.$keyProps = ['id'];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSXRlbS5qcyIsInNvdXJjZVJvb3QiOiIuLyIsInNvdXJjZXMiOlsic3JjL2RhdGEvSXRlbS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7OztHQU1HOzs7QUFFSCx3Q0FBeUM7QUFXekMsOEVBQThFO0FBQzlFLE1BQWEsVUFBVyxTQUFRLGdCQUF1QjtJQUlyRCxLQUFLLENBQUMsTUFBTSxDQUFDLFdBQW9CO1FBQy9CLE9BQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxhQUFHLENBQWdDLG1CQUFtQixFQUFFLFdBQVcsQ0FBQyxDQUFDO0lBQzlGLENBQUM7O0FBTkgsZ0NBT0M7QUFOUSxnQkFBSyxHQUFHLE1BQU0sQ0FBQyxDQUFDLDJCQUEyQjtBQUMzQyxlQUFJLEdBQUcsYUFBRyxDQUFZLHVCQUF1QixDQUFDO0FBQzlDLG9CQUFTLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBCdWlsZGVySU8gQWxsIFJpZ2h0cyBSZXNlcnZlZC5cbiAqXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2dpdGh1Yi5jb20vQnVpbGRlcklPL3F3aWsvYmxvYi9tYWluL0xJQ0VOU0VcbiAqL1xuXG5pbXBvcnQgeyBRUkwsIEVudGl0eSB9IGZyb20gJy4uL3F3aWsuanMnO1xuXG5leHBvcnQgaW50ZXJmYWNlIEl0ZW1Qcm9wcyB7XG4gIGlkOiBzdHJpbmc7XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgSXRlbSB7XG4gIGNvbXBsZXRlZDogYm9vbGVhbjtcbiAgdGl0bGU6IHN0cmluZztcbn1cblxuLy8gVE9ETzogSG93IGNhbiB0aGlzIGJlIHNwbGl0IGludG8gcHVibGljIC8gcHJpdmF0ZSBwYXJ0IGp1c3QgbGlrZSBDb21wb25lbnRzXG5leHBvcnQgY2xhc3MgSXRlbUVudGl0eSBleHRlbmRzIEVudGl0eTxJdGVtUHJvcHMsIEl0ZW0+IHtcbiAgc3RhdGljICR0eXBlID0gJ0l0ZW0nOyAvLyBUT0RPKHR5cGUpOiBhZGQgYXMgY29uc3RcbiAgc3RhdGljICRxcmwgPSBRUkw8SXRlbUVudGl0eT5gZGF0YTovSXRlbSNJdGVtRW50aXR5YDtcbiAgc3RhdGljICRrZXlQcm9wcyA9IFsnaWQnXTtcbiAgYXN5bmMgdG9nZ2xlKGlzQ29tcGxldGVkOiBib29sZWFuKTogUHJvbWlzZTx2b2lkPiB7XG4gICAgcmV0dXJuIHRoaXMuJGludm9rZVFSTChRUkw8KGlzQ29tcGxldGVkOiBib29sZWFuKSA9PiB2b2lkPmBkYXRhOi9JdGVtX3RvZ2dsZWAsIGlzQ29tcGxldGVkKTtcbiAgfVxufVxuIl19

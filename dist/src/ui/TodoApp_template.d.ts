@@ -5,14 +5,7 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://github.com/BuilderIO/qwik/blob/main/LICENSE
  */
-
-import { dirname, setConfig } from './qwik.js';
-
-setConfig({
-  baseURI: __dirname,
-  protocol: {
-    ui: './ui',
-    data: './data',
-    base: '.'
-  }
-});
+import { jsxFactory } from '../qwik.js';
+export declare const _needed_by_JSX_: typeof jsxFactory;
+declare const _default: import("../qwik.js").InjectedFunction<null, [], any[], any>;
+export default _default;

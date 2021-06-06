@@ -138,7 +138,6 @@ function createServerJSHandler(
   };
 }
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
 main(__dirname, process).then(() => {
   console.log('Serving ...');
 });

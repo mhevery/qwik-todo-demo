@@ -1,0 +1,8 @@
+// This is workaround for https://github.com/stackblitz/webcontainer-core/issues/167
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "outDir": "./dist-server",
+      "module": "CommonJS"
+    }
+}
