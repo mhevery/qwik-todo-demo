@@ -18,6 +18,7 @@ import { serializeState } from '@builder.io/qwik';
 import { findFiles } from './fs_util.js';
 
 srcMap.install();
+const RUNFILES = '.';
 
 async function main(__dirname: string, process: NodeJS.Process) {
   console.log('===================================================');
@@ -34,9 +35,6 @@ async function main(__dirname: string, process: NodeJS.Process) {
   const opts: { port: number; root: string[] } = program.opts() as any;
   console.log(opts);
   const app = (express as any)();
-
-  const RUNFILES: string = process.env.RUNFILES || '';
-  console.log('RUNFILES', RUNFILES);
 
   app.use(
     (
@@ -62,9 +60,13 @@ async function main(__dirname: string, process: NodeJS.Process) {
   const servePaths = opts.root.map((servePath: string) =>
     join(RUNFILES, servePath)
   );
-  const qwikBundle = readBundleContent(servePaths);
+  const qwikBundle = String(
+    fs.readFileSync('./node_modules/@builder.io/qwik/qwik.js')
+  );
 
+  console.log('A', servePaths);
   servePaths.forEach((path: string) => {
+    console.log(path);
     if (fs.existsSync(path)) {
       console.log('Serve static:', path);
       app.use('/', express.static(path));
@@ -96,19 +98,6 @@ async function main(__dirname: string, process: NodeJS.Process) {
   );
 
   app.listen(opts.port);
-}
-
-function readBundleContent(paths: string[]): string | null {
-  for (let i = 0; i < paths.length; i++) {
-    const path = paths[i];
-    const qwikPath = join(path, 'qwik.js');
-    const content = fs.readFileSync(qwikPath);
-    if (content.length) {
-      console.log('Found Qwik bundle:', qwikPath);
-      return String(content);
-    }
-  }
-  return null;
 }
 
 function createServerJSHandler(
