@@ -64,7 +64,6 @@ async function main(__dirname: string, process: NodeJS.Process) {
     fs.readFileSync('./node_modules/@builder.io/qwik/qwik.js')
   );
 
-  console.log('A', servePaths);
   servePaths.forEach((path: string) => {
     console.log(path);
     if (fs.existsSync(path)) {
@@ -91,7 +90,8 @@ async function main(__dirname: string, process: NodeJS.Process) {
   await Promise.all(
     serverIndexJS.map(async indexJS => {
       console.log('Importing: ', indexJS.path);
-      const serverMain = (await import(indexJS.path)).serverMain;
+      const serverMain = require('./' + indexJS.path).serverMain;
+      console.log('XXXX');
       const baseURI = `file://${indexJS.path}`;
       app.use('/' + indexJS.url, createServerJSHandler(serverMain, baseURI));
     })

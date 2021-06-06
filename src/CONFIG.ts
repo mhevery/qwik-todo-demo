@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://github.com/BuilderIO/qwik/blob/main/LICENSE
  */
 
-import { dirname, setConfig } from './qwik.js';
+import { dirname, setConfig } from '@builder.io/qwik';
 
 setConfig({
   baseURI: __dirname,

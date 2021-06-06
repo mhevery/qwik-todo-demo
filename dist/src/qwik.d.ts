@@ -11,4 +11,4 @@
  * This file is to simulate the import from `./qwik.js` which the server serves
  * as `//client/qwik.ts`
  */
-export * from 'qwik';
+export * from '@builder.io/qwik';
