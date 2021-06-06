@@ -13,7 +13,7 @@ import * as fs from 'fs';
 import { dirname, join } from 'path';
 import srcMap from 'source-map-support';
 import { fileURLToPath } from 'url';
-import { serializeState } from 'qwik';
+import { serializeState } from '@builder.io/qwik';
 
 import { findFiles } from './fs_util.js';
 
