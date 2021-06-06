@@ -1,0 +1,10 @@
+{
+  "name": "node-starter",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@builder.io/qwik": "0.0.6",
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {}
+}
