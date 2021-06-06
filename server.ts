@@ -19,6 +19,13 @@ import { findFiles } from './fs_util.js';
 
 srcMap.install();
 const RUNFILES = '.';
+(global as any).__mockImport = (path: string) => {
+  console.log('IMPORT', path);
+  path = path.replace('file://', '');
+  path = path.split('#')[0];
+  console.log('IMPORT', path);
+  return Promise.resolve(require(path));
+};
 
 async function main(__dirname: string, process: NodeJS.Process) {
   console.log('===================================================');
@@ -90,10 +97,14 @@ async function main(__dirname: string, process: NodeJS.Process) {
   await Promise.all(
     serverIndexJS.map(async indexJS => {
       console.log('Importing: ', indexJS.path);
-      const serverMain = require('./' + indexJS.path).serverMain;
-      console.log('XXXX');
-      const baseURI = `file://${indexJS.path}`;
-      app.use('/' + indexJS.url, createServerJSHandler(serverMain, baseURI));
+      try {
+        const serverMain = require('./' + indexJS.path).serverMain;
+        console.log('XXXX');
+        const baseURI = `file://${indexJS.path}`;
+        app.use('/' + indexJS.url, createServerJSHandler(serverMain, baseURI));
+      } catch (e) {
+        console.error(e);
+      }
     })
   );
 
