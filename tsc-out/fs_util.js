@@ -1,0 +1,22 @@
+/**
+ * @license
+ * Copyright BuilderIO All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/BuilderIO/qwik/blob/main/LICENSE
+ */
+import * as fs from 'fs';
+import { join } from 'path';
+export function findFiles(baseDir, pattern, fn, relativeDir = '') {
+    const fullPathDir = join(baseDir, relativeDir);
+    fs.readdirSync(fullPathDir).forEach(name => {
+        const fullPathFile = join(fullPathDir, name);
+        if (pattern instanceof RegExp ? pattern.exec(name) : pattern === name) {
+            fn(fullPathFile, name, relativeDir);
+        }
+        if (fs.statSync(fullPathFile).isDirectory()) {
+            findFiles(baseDir, pattern, fn, join(relativeDir, name));
+        }
+    });
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZnNfdXRpbC5qcyIsInNvdXJjZVJvb3QiOiIuLyIsInNvdXJjZXMiOlsiZnNfdXRpbC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7O0dBTUc7QUFFSCxPQUFPLEtBQUssRUFBRSxNQUFNLElBQUksQ0FBQztBQUN6QixPQUFPLEVBQUUsSUFBSSxFQUFFLE1BQU0sTUFBTSxDQUFDO0FBRTVCLE1BQU0sVUFBVSxTQUFTLENBQ3ZCLE9BQWUsRUFDZixPQUF3QixFQUN4QixFQUFzRSxFQUN0RSxjQUFzQixFQUFFO0lBRXhCLE1BQU0sV0FBVyxHQUFHLElBQUksQ0FBQyxPQUFPLEVBQUUsV0FBVyxDQUFDLENBQUM7SUFDL0MsRUFBRSxDQUFDLFdBQVcsQ0FBQyxXQUFXLENBQUMsQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLEVBQUU7UUFDekMsTUFBTSxZQUFZLEdBQUcsSUFBSSxDQUFDLFdBQVcsRUFBRSxJQUFJLENBQUMsQ0FBQztRQUM3QyxJQUFJLE9BQU8sWUFBWSxNQUFNLENBQUMsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDLE9BQU8sS0FBSyxJQUFJLEVBQUU7WUFDckUsRUFBRSxDQUFDLFlBQVksRUFBRSxJQUFJLEVBQUUsV0FBVyxDQUFDLENBQUM7U0FDckM7UUFDRCxJQUFJLEVBQUUsQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDLENBQUMsV0FBVyxFQUFFLEVBQUU7WUFDM0MsU0FBUyxDQUFDLE9BQU8sRUFBRSxPQUFPLEVBQUUsRUFBRSxFQUFFLElBQUksQ0FBQyxXQUFXLEVBQUUsSUFBSSxDQUFDLENBQUMsQ0FBQztTQUMxRDtJQUNILENBQUMsQ0FBQyxDQUFDO0FBQ0wsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBCdWlsZGVySU8gQWxsIFJpZ2h0cyBSZXNlcnZlZC5cbiAqXG4gKiBVc2Ugb2YgdGhpcyBzb3VyY2UgY29kZSBpcyBnb3Zlcm5lZCBieSBhbiBNSVQtc3R5bGUgbGljZW5zZSB0aGF0IGNhbiBiZVxuICogZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBhdCBodHRwczovL2dpdGh1Yi5jb20vQnVpbGRlcklPL3F3aWsvYmxvYi9tYWluL0xJQ0VOU0VcbiAqL1xuXG5pbXBvcnQgKiBhcyBmcyBmcm9tICdmcyc7XG5pbXBvcnQgeyBqb2luIH0gZnJvbSAncGF0aCc7XG5cbmV4cG9ydCBmdW5jdGlvbiBmaW5kRmlsZXMoXG4gIGJhc2VEaXI6IHN0cmluZyxcbiAgcGF0dGVybjogc3RyaW5nIHwgUmVnRXhwLFxuICBmbjogKGZ1bGxQYXRoOiBzdHJpbmcsIGZpbGVuYW1lOiBzdHJpbmcsIHJlbGF0aXZlUGF0aDogc3RyaW5nKSA9PiB2b2lkLFxuICByZWxhdGl2ZURpcjogc3RyaW5nID0gJydcbikge1xuICBjb25zdCBmdWxsUGF0aERpciA9IGpvaW4oYmFzZURpciwgcmVsYXRpdmVEaXIpO1xuICBmcy5yZWFkZGlyU3luYyhmdWxsUGF0aERpcikuZm9yRWFjaChuYW1lID0+IHtcbiAgICBjb25zdCBmdWxsUGF0aEZpbGUgPSBqb2luKGZ1bGxQYXRoRGlyLCBuYW1lKTtcbiAgICBpZiAocGF0dGVybiBpbnN0YW5jZW9mIFJlZ0V4cCA/IHBhdHRlcm4uZXhlYyhuYW1lKSA6IHBhdHRlcm4gPT09IG5hbWUpIHtcbiAgICAgIGZuKGZ1bGxQYXRoRmlsZSwgbmFtZSwgcmVsYXRpdmVEaXIpO1xuICAgIH1cbiAgICBpZiAoZnMuc3RhdFN5bmMoZnVsbFBhdGhGaWxlKS5pc0RpcmVjdG9yeSgpKSB7XG4gICAgICBmaW5kRmlsZXMoYmFzZURpciwgcGF0dGVybiwgZm4sIGpvaW4ocmVsYXRpdmVEaXIsIG5hbWUpKTtcbiAgICB9XG4gIH0pO1xufVxuIl19

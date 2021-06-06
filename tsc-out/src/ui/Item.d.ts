@@ -10,4 +10,4 @@ import { EntityKey } from '../qwik.js';
 export interface ItemProps {
     $item: EntityKey<ItemEntity>;
 }
-export declare const Item: any;
+export declare const Item: (props: ItemProps & import("../qwik.js").JSXBase) => import("../qwik.js").JSXNode<string>;

@@ -7,7 +7,7 @@
  */
 export interface ToDoAppProps {
 }
-export declare const ToDoApp: any;
+export declare const ToDoApp: (props: ToDoAppProps & import("../qwik.js").JSXBase) => import("../qwik.js").JSXNode<string>;
 /**
 export function ToDoApp2(props: Record<any, any>) {
   return <div decl:template="ui:/ToDoApp_template" />;

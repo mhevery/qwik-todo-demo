@@ -14,4 +14,4 @@ import { EntityKey } from '../qwik.js';
 export interface FooterProps {
     $todos: EntityKey<TodoEntity>;
 }
-export declare const Footer: any;
+export declare const Footer: (props: FooterProps & import("../qwik.js").JSXBase) => import("../qwik.js").JSXNode<string>;

@@ -10,4 +10,4 @@ import type { TodoEntity } from '../data/Todo.js';
 export interface MainProps {
     $todos: EntityKey<TodoEntity>;
 }
-export declare const Main: any;
+export declare const Main: (props: MainProps & import("../qwik.js").JSXBase) => import("../qwik.js").JSXNode<string>;
