@@ -116,11 +116,11 @@ async function main(__dirname: string, process: NodeJS.Process) {
   // Now search for `server.js`
   await Promise.all(
     serverIndexJS.map(async indexJS => {
-      console.log('Importing: ', indexJS.path);
+      console.log('Importing:', indexJS.path);
       try {
         console.log('BEFORE', indexJS.path);
         const serverMain = require('../' + indexJS.path).serverMain;
-        console.log('AFTER', indexJS.p);
+        console.log('AFTER', indexJS.path);
         const baseURI = `file://${indexJS.path}`;
         app.use('/' + indexJS.url, createServerJSHandler(serverMain, baseURI));
       } catch (e) {
