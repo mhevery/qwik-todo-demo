@@ -10,14 +10,34 @@ import commander from 'commander';
 import domino from 'domino';
 import express from 'express';
 import * as fs from 'fs';
-import { dirname, join } from 'path';
-import srcMap from 'source-map-support';
-import { fileURLToPath } from 'url';
+import { join } from 'path';
+// source-map-support seems to break node.
+// import srcMap from 'source-map-support';
 import { serializeState } from '@builder.io/qwik';
-
 import { findFiles } from './fs_util.js';
+import * as _module from 'module';
 
-srcMap.install();
+console.log(Object.keys(_module));
+console.log(process.cwd());
+Object.defineProperty(
+  _module,
+  '_resolveFilename',
+  (function(delegate: Function) {
+    return function(
+      request: string,
+      parent: any,
+      isMain: boolean,
+      options: any
+    ) {
+      console.log('REQUIRE', request, '...');
+      const ret = delegate.call(_module, request, parent, isMain, options);
+      console.log('REQUIRE', request, '!');
+      return ret;
+    };
+  })((_module as any)._resolveFilename)
+);
+
+// srcMap.install();
 const RUNFILES = '.';
 (global as any).__mockImport = (path: string) => {
   console.log('IMPORT', path);
@@ -98,8 +118,9 @@ async function main(__dirname: string, process: NodeJS.Process) {
     serverIndexJS.map(async indexJS => {
       console.log('Importing: ', indexJS.path);
       try {
-        const serverMain = require('./' + indexJS.path).serverMain;
-        console.log('XXXX');
+        console.log('BEFORE', indexJS.path);
+        const serverMain = require('../' + indexJS.path).serverMain;
+        console.log('AFTER', indexJS.p);
         const baseURI = `file://${indexJS.path}`;
         app.use('/' + indexJS.url, createServerJSHandler(serverMain, baseURI));
       } catch (e) {
