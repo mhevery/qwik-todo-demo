@@ -9,7 +9,7 @@
 import { dirname, setConfig } from '@builder.io/qwik';
 
 setConfig({
-  baseURI: __dirname + '/src',
+  baseURI: 'file://' + __dirname + '/',
   protocol: {
     ui: './ui',
     data: './data',

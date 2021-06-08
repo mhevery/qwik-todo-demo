@@ -17,8 +17,6 @@ import { serializeState } from '@builder.io/qwik';
 import { findFiles } from './fs_util.js';
 import * as _module from 'module';
 
-console.log(Object.keys(_module));
-console.log(process.cwd());
 Object.defineProperty(
   _module,
   '_resolveFilename',
@@ -29,22 +27,19 @@ Object.defineProperty(
       isMain: boolean,
       options: any
     ) {
-      console.log('REQUIRE', request, '...');
       const ret = delegate.call(_module, request, parent, isMain, options);
-      console.log('REQUIRE', request, '!');
       return ret;
     };
   })((_module as any)._resolveFilename)
 );
 
 // srcMap.install();
-const RUNFILES = '.';
+const RUNFILES = process.cwd();
 (global as any).__mockImport = (path: string) => {
-  console.log('IMPORT', path);
   path = path.replace('file://', '');
   path = path.split('#')[0];
-  console.log('IMPORT', path);
-  return Promise.resolve(require(path));
+  const result = Promise.resolve(require(path));
+  return result;
 };
 
 async function main(__dirname: string, process: NodeJS.Process) {
@@ -69,14 +64,17 @@ async function main(__dirname: string, process: NodeJS.Process) {
       res: express.Response,
       next: express.NextFunction
     ) => {
-      if (req.path.endsWith('/qwik.js') && req.path !== '/qwik.js') {
+      console.log('REQUEST', req.path);
+      if (req.path.endsWith('/qwik.js')) {
         res.type('application/javascript');
-        if (qwikBundle) {
-          res.write(qwikBundle);
+        if (req.path == '/qwik.js') {
+          res.send(qwikBundle);
         } else {
-          res.write("export * from '/qwik.js';");
+          res.send("export * from '/qwik.js';");
         }
-        res.end();
+      } else if (req.path.endsWith('/qwikloader.min.js')) {
+        res.type('application/javascript');
+        res.send(qwikloaderBundle);
       } else {
         next();
       }
@@ -91,6 +89,10 @@ async function main(__dirname: string, process: NodeJS.Process) {
     fs.readFileSync('./node_modules/@builder.io/qwik/qwik.js')
   );
 
+  const qwikloaderBundle = String(
+    fs.readFileSync('./node_modules/@builder.io/qwik/qwikloader.js')
+  );
+
   servePaths.forEach((path: string) => {
     console.log(path);
     if (fs.existsSync(path)) {
@@ -103,6 +105,8 @@ async function main(__dirname: string, process: NodeJS.Process) {
 
   const serverIndexJS: { url: string; path: string }[] = [];
   opts.root.forEach(root => {
+    // Hack to switch to server CJS because: https://github.com/stackblitz/webcontainer-core/issues/167c
+    root = root.replace('/dist/', '/dist-server/');
     findFiles(
       join(RUNFILES, root),
       'server_index.js',
@@ -118,9 +122,7 @@ async function main(__dirname: string, process: NodeJS.Process) {
     serverIndexJS.map(async indexJS => {
       console.log('Importing:', indexJS.path);
       try {
-        console.log('BEFORE', indexJS.path);
-        const serverMain = require('../' + indexJS.path).serverMain;
-        console.log('AFTER', indexJS.path);
+        const serverMain = require(indexJS.path).serverMain;
         const baseURI = `file://${indexJS.path}`;
         app.use('/' + indexJS.url, createServerJSHandler(serverMain, baseURI));
       } catch (e) {
