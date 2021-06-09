@@ -5,10 +5,8 @@
   "dependencies": {
     "@builder.io/qwik": "^0.0.10",
     "commander": "^7.2.0",
-    "concurrently": "^6.2.0",
     "domino": "^2.1.6",
     "express": "^4.17.1",
-    "nodemon": "^2.0.7",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
@@ -19,7 +17,6 @@
   },
   "scripts": {
     "build": "tsc -p ./tsconfig.json && tsc -p ./tsconfig.server.json",
-    "watch": "concurrently \"tsc -w -p ./tsconfig.json\" \"tsc -w -p ./tsconfig.server.json\" \"nodemon ./dist-server/server.js -r ./dist/src -r src\"",
     "server": "npm run build && node ./dist-server/server.js -r ./dist/src -r src"
   }
 }

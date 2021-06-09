@@ -1,4 +1,4 @@
 {
   "installDependencies": true,
-  "startCommand": "npm run watch"
+  "startCommand": "npm run server"
 }
